@@ -1,4 +1,5 @@
 import gleam/io
+import gleam/option.{Some}
 import util/terminal
 
 pub fn main() {
@@ -14,7 +15,7 @@ pub fn main() {
   // Spacer for readability
   io.println("")
 
-  let correct = terminal.confirm("Is this correct?", False)
+  let correct = terminal.confirm("Is this correct?", Some(True))
   case correct {
     True -> io.println("Awesome! :)")
     False -> io.println("You're dead to me")
