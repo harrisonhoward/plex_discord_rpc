@@ -9,6 +9,8 @@ repository = { type = "github", user = "harrisonhoward", repo = "plex_discord_rp
 
 [dependencies]
 gleam_stdlib = "~> 0.36"
+survey = "~> 0.3"
+shellout = "~> 1.6"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"
