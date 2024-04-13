@@ -3,7 +3,7 @@
 import gleam/string
 import gleam/option.{type Option, None, Some}
 import survey
-import shellout.{exit}
+import shellout
 
 /// To prevent having input all arguments this function handles only showing the prompt
 fn question(text display: String) -> survey.Survey {
@@ -66,7 +66,7 @@ pub fn prompt(text display: String) -> String {
   // If the user types 'exit' close the application
   case string.lowercase(response) {
     "exit" -> {
-      quit()
+      exit()
       // Still need to return a string even though it exits
       ""
     }
@@ -83,14 +83,14 @@ pub fn confirm(text display: String, default default: Option(Bool)) -> Bool {
     "true" -> True
     "false" -> False
     _exit -> {
-      quit()
+      exit()
       // Still need to return a boolean even though it exits
       False
     }
   }
 }
 
-/// Quit the terminal
-pub fn quit() {
-  exit(0)
+/// Exits the terminal
+pub fn exit() {
+  shellout.exit(0)
 }

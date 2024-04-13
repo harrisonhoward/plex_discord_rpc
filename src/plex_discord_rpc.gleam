@@ -7,7 +7,7 @@ pub fn main() {
   case hello {
     "something" -> {
       io.println("Oh you think you're funny huh?")
-      terminal.quit()
+      terminal.exit()
     }
     _ -> io.println("You typed: " <> hello)
   }
