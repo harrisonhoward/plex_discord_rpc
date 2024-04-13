@@ -40,7 +40,7 @@ gleam run
 
 ## Contributing
 
-1. [Fork it](https://github.com/harrisonhoward/plex_discord_rpc)
+1. [Fork it](https://github.com/harrisonhoward/plex_discord_rpc/fork)
 2. Clone your forked repository `git clone https://github.com/YOUR_USERNAME/plex_discord_rpc.bit`
 3. Create your feature branch `git checkout -b feature/my-new-feature`
 4. Commit your changes `git commit -am 'Add some feature'`
