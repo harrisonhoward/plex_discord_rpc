@@ -1,5 +1,8 @@
 import gleam/io
+import util/terminal
 
 pub fn main() {
-  io.println("Hello from plex_discord_rpc!")
+  let hello = terminal.prompt("Type something:")
+
+  io.println("You typed: " <> hello)
 }
