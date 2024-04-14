@@ -1,13 +1,15 @@
 //// The utility file for the help command and flag
 
 import gleam/io
-import glint.{type CommandInput}
 // Command utils
 import util/watch_tool
 import util/auth_tool
 
+/// Description for the 'help' command
 pub const description = "Below are the commands that are available in this project.\nIf you need help with a specific command attach the flag '--help' when running the command."
 
+/// The output print for the base 'help' command.\
+/// Does not represent the 'help' flag output
 pub fn print() {
   io.println(
     description
@@ -22,8 +24,4 @@ pub fn print() {
     <> "\tauth\t\t"
     <> auth_tool.description,
   )
-}
-
-pub fn do_command(_input: CommandInput) {
-  print()
 }

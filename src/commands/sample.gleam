@@ -1,8 +1,11 @@
+//// Hidden sample command.
+
 import gleam/io
 import gleam/option.{Some}
 import glint.{type CommandInput, type Glint}
 import util/terminal
 
+/// Runs the basic terminal code for testing the command and terminal logic
 fn do(_input: CommandInput) {
   let hello = terminal.prompt("Type something")
   case hello {
@@ -22,6 +25,7 @@ fn do(_input: CommandInput) {
   |> io.println
 }
 
+/// Adds the 'sample' command to the glint instance
 pub fn command(to glint: Glint(Nil)) {
   glint.add(
     to: glint,

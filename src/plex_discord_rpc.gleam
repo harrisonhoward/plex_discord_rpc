@@ -6,6 +6,7 @@ import commands/help as help_command
 import commands/watch
 import commands/auth
 
+/// Entry point for the application
 pub fn main() {
   // Create a new instance of glint (our command handler)
   glint.new()
