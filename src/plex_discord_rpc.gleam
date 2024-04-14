@@ -1,23 +1,19 @@
-import gleam/io
-import gleam/option.{Some}
-import util/terminal
+import glint
+import argv
+// Commands
+import commands/sample
+import commands/help as help_command
 
 pub fn main() {
-  let hello = terminal.prompt("Type something")
-  case hello {
-    "something" -> {
-      io.println("Oh you think you're funny huh?")
-      terminal.exit()
-    }
-    _ -> io.println("You typed: " <> hello)
-  }
-
-  // Spacer for readability
-  io.println("")
-
-  let correct = terminal.confirm("Is this correct?", Some(True))
-  case correct {
-    True -> io.println("Awesome! :)")
-    False -> io.println("You're dead to me")
-  }
+  // Create a new instance of glint (our command handler)
+  glint.new()
+  // Name of our application
+  |> glint.with_name("plexrpc")
+  // Setup our --help flag for our individual commands
+  |> glint.without_pretty_help()
+  // Add our commands
+  |> help_command.command()
+  |> sample.command()
+  // Parse the stdin arguments
+  |> glint.run(argv.load().arguments)
 }
