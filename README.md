@@ -21,10 +21,16 @@ This will take time especially as a solo runner but I am determined that I will 
 
 The work will be based on these JavaScript repositories. JavaScript is what I would call my 'native' programming language so that what I'll use to translate existing work. I've been using Gleam for a couple days since writing this..
 
--   [node-plex-api-headers](https://github.com/phillipj/node-plex-api-headers) created by phillipj
--   [node-plex-api](https://github.com/phillipj/node-plex-api) created by phillipj
+-   [node-plex-api-pinauth](https://github.com/Zefau/node-plex-api-pinauth) created by Zefau
 -   [plex-websocket](https://github.com/harrisonhoward/plex-websocket) created by me (harrisonhoward)
 -   [plex-rpc-js](https://github.com/harrisonhoward/plex-rpc-js) created by me (harrisonhoward)
+
+### Plex Pin Auth Documentation
+
+It appears the API isn't officially documented however I found some third-party documentation website. This website will be used in the creation of the pin authentication.
+
+-   [get-pin](https://plexapi.dev/docs/plex/get-pin)
+-   [get-token](https://plexapi.dev/docs/plex/get-token)
 
 ## Development
 
