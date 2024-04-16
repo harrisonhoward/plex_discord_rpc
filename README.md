@@ -8,8 +8,6 @@
 
 For this project to be successful I need to create in alignment the following projects
 
--   Plex API
-    -   [![Status](https://img.shields.io/badge/Status-Not%20started-red.svg)](https://shields.io/)
 -   Plex Pin auth
     -   [![Status](https://img.shields.io/badge/Status-Not%20started-red.svg)](https://shields.io/)
 -   Plex Websocket
