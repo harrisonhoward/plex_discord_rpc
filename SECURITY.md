@@ -2,7 +2,7 @@
 
 ## Token Protection
 
-Your token is stored within an environment file and is stored as plain text. Protecting your token is the responsibility of the user, in the event that your machine becomes compromised we recommend changing the password to your Plex account immediately. We are not responsible for your token or machine being compromised (i.e. virus, malware, ransomware, or physical machine access). Your token is sent to the Plex servers for authorization and authentication.
+Your token is stored with an environment file as plain text. Protecting your token is the responsibility of the user, in the event that your machine becomes compromised we recommend changing the password to your Plex account immediately. The repository authors, contributors and maintainers are not responsible for your token or machine being compromised (i.e. virus, malware, ransomware, or physical machine access). Your token is sent to the Plex servers for authorization and authentication.
 
 ## Supported Versions
 
