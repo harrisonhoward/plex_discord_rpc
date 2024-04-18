@@ -1,9 +1,9 @@
 //// This module is a wrapper for the survey module to handle input and output within the terminal.
 
-import gleam/string
 import gleam/option.{type Option, None, Some}
-import survey
+import gleam/string
 import shellout
+import survey
 
 /// To prevent having input all arguments this function handles only showing the prompt
 fn question(text display: String) -> survey.Survey {

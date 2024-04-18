@@ -1,10 +1,11 @@
-import glint
 import argv
+import glint
+
 // Commands
-import commands/sample
-import commands/help as help_command
-import commands/watch
 import commands/auth
+import commands/help as help_command
+import commands/sample
+import commands/watch
 
 /// Entry point for the application
 pub fn main() {
