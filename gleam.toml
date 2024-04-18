@@ -1,6 +1,6 @@
 name = "plex_discord_rpc"
 version = "1.0.0"
-gleam = ">= 1.0.0"
+gleam = ">= 1.1.0"
 target = "erlang"
 
 description = "Plex to Discord RPC application created with Gleam"
