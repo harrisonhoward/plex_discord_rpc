@@ -3,6 +3,7 @@
 
 packages = [
   { name = "argv", version = "1.0.2", build_tools = ["gleam"], requirements = [], otp_app = "argv", source = "hex", outer_checksum = "BA1FF0929525DEBA1CE67256E5ADF77A7CDDFE729E3E3F57A5BDCAA031DED09D" },
+  { name = "dot_env", version = "0.5.1", build_tools = ["gleam"], requirements = ["gleam_stdlib", "simplifile"], otp_app = "dot_env", source = "hex", outer_checksum = "AF5C972D6129F67AF3BB00134AB2808D37111A8D61686CFA86F3ADF652548982" },
   { name = "filepath", version = "1.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "filepath", source = "hex", outer_checksum = "EFB6FF65C98B2A16378ABC3EE2B14124168C0CE5201553DE652E2644DCFDB594" },
   { name = "gleam_community_ansi", version = "1.4.0", build_tools = ["gleam"], requirements = ["gleam_community_colour", "gleam_stdlib"], otp_app = "gleam_community_ansi", source = "hex", outer_checksum = "FE79E08BF97009729259B6357EC058315B6FBB916FAD1C2FF9355115FEB0D3A4" },
   { name = "gleam_community_colour", version = "1.4.0", build_tools = ["gleam"], requirements = ["gleam_json", "gleam_stdlib"], otp_app = "gleam_community_colour", source = "hex", outer_checksum = "795964217EBEDB3DA656F5EB8F67D7AD22872EB95182042D3E7AFEF32D3FD2FE" },
@@ -20,9 +21,10 @@ packages = [
 
 [requirements]
 argv = { version = "~> 1.0" }
+dot_env = { version = ">= 0.5.1 and < 1.0.0" }
 gleam_stdlib = { version = "~> 0.36" }
 gleeunit = { version = "~> 1.0" }
 glint = { version = "~> 0.18" }
 shellout = { version = "~> 1.6" }
-simplifile = { version = ">= 1.7.0 and < 2.0.0"}
+simplifile = { version = ">= 1.7.0 and < 2.0.0" }
 survey = { version = "~> 0.3" }
