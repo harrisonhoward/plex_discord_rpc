@@ -2,7 +2,7 @@
 
 import gleam/io
 import glint.{type CommandInput, type Glint}
-import util/watch_tool
+import util/commands/watch_tool
 
 /// The 'watch' command logic
 fn do(_input: CommandInput) {

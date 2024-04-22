@@ -3,8 +3,9 @@
 import gleam/io
 
 // Command utils
-import util/auth_tool
-import util/watch_tool
+import util/commands/auth_tool
+import util/commands/config_tool
+import util/commands/watch_tool
 
 /// Description for the 'help' command
 pub const description = "Below are the commands that are available in this project.\nIf you need help with a specific command attach the flag '--help' when running the command."
@@ -23,6 +24,9 @@ pub fn print() {
     <> watch_tool.description
     <> "\n"
     <> "\tauth\t\t"
-    <> auth_tool.description,
+    <> auth_tool.description
+    <> "\n"
+    <> "\tconfig\t\t"
+    <> config_tool.description,
   )
 }
