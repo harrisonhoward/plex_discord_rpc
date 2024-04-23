@@ -10,19 +10,15 @@ import simplifile.{type FileError}
 
 pub const name_of_config_file = "config.env"
 
-/// Represents the user inputted base config
-pub type BaseConfigOption {
-  BaseConfigOption(
-    /// Required (Expected to be a URL)
-    hostname: String,
-    /// Optional (Default 32400)
+/// Represents the user inputted config. All options are optional.
+pub type ConfigOption {
+  ConfigOption(
+    hostname: Option(String),
     port: Option(Int),
-    /// Optional (Default "me")
     username: Option(String),
-    /// Optional (Default false)
     https: Option(Bool),
-    /// Optional
     check_users: Option(List(String)),
+    token: Option(String),
   )
 }
 
@@ -69,7 +65,7 @@ pub fn init_config_file() -> Result(Nil, FileError) {
   }
 }
 
-/// Will return a boolean if the current config is valid to the base config type
+/// Will return a boolean if the current config is valid to the base config type\
 /// Essentially just checks if hostname is present and returns true or false
 pub fn is_base_config_valid() -> Bool {
   // Check all required keys and return true or false
@@ -79,7 +75,7 @@ pub fn is_base_config_valid() -> Bool {
   }
 }
 
-/// Returns the base config
+/// Returns the base config\
 /// if should_panic is true (Will error if hostname isn't provided)
 pub fn get_base_config(should_panic should_panic: Bool) -> BaseConfig {
   // Read each config key
@@ -110,13 +106,41 @@ pub fn get_base_config(should_panic should_panic: Bool) -> BaseConfig {
   )
 }
 
-/// Writes to the base config file
+/// Will return a boolean if the current config is valid to the auth config type\
+/// Essentially just checks if token is present and returns true or false
+pub fn is_auth_config_valid() -> Bool {
+  // Check all required keys and return true or false
+  case env.get("token") {
+    Ok(_) -> True
+    Error(_) -> False
+  }
+}
+
+/// Returns the auth config\
+/// if should_panic is true (Will error if token isn't provided)
+pub fn get_auth_config(should_panic should_panic: Bool) -> AuthConfig {
+  // Read each config key
+  let token = case env.get("token") {
+    Ok(value) -> value
+    Error(_) if should_panic -> panic as "Token not found in config file"
+    Error(_) -> ""
+  }
+
+  AuthConfig(token: token)
+}
+
+/// Writes to the base config file\
 /// Will remove all bad keys and write the new keys to the file
-pub fn set_base_config(input: BaseConfigOption) -> Result(Nil, FileError) {
+pub fn set_config(input: ConfigOption) -> Result(Nil, FileError) {
   // Get current config (Don't panic if host_name isn't present)
   let current_config = get_base_config(should_panic: False)
+  let current_auth = get_auth_config(should_panic: False)
 
   // Get the new values
+  let new_hostname = case input.hostname {
+    Some(hostname) -> hostname
+    None -> current_config.hostname
+  }
   let new_port = case input.port {
     Some(port) -> int.to_string(port)
     None -> int.to_string(current_config.port)
@@ -133,12 +157,16 @@ pub fn set_base_config(input: BaseConfigOption) -> Result(Nil, FileError) {
     Some(users) -> string.join(users, ",")
     None -> string.join(current_config.check_users, ",")
   }
+  let new_token = case input.token {
+    Some(token) -> token
+    None -> current_auth.token
+  }
 
   // Write to the file (overwrites)
   simplifile.write(
     to: "./" <> name_of_config_file,
     contents: "hostname='"
-      <> input.hostname
+      <> new_hostname
       <> "'\n"
       <> "port="
       <> new_port
@@ -151,6 +179,9 @@ pub fn set_base_config(input: BaseConfigOption) -> Result(Nil, FileError) {
       <> "\n"
       <> "check_users='"
       <> new_check_users
+      <> "'\n"
+      <> "token='"
+      <> new_token
       <> "'",
   )
 }
