@@ -168,9 +168,9 @@ pub fn set_config(input: ConfigOption) -> Result(Nil, FileError) {
     contents: "hostname='"
       <> new_hostname
       <> "'\n"
-      <> "port="
+      <> "port='"
       <> new_port
-      <> "\n"
+      <> "'\n"
       <> "username='"
       <> new_username
       <> "'\n"
