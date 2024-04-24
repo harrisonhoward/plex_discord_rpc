@@ -13,6 +13,8 @@ survey = "~> 0.3"
 shellout = "~> 1.6"
 glint = "~> 0.18"
 argv = "~> 1.0"
+simplifile = ">= 1.7.0 and < 2.0.0"
+dot_env = ">= 0.5.1 and < 1.0.0"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"

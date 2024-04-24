@@ -2,7 +2,7 @@
 
 import gleam/io
 import glint.{type CommandInput, type Glint}
-import util/auth_tool
+import util/commands/auth_tool
 
 /// The 'auth' command logic
 fn do(_input: CommandInput) {

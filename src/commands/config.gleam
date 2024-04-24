@@ -1,19 +1,18 @@
-//// Command to initiate the Plex RPC connection. Requires authentication to be setup.
+//// Command to write the config file for the specific user's environment
 
-import gleam/io
 import glint.{type CommandInput, type Glint}
 import util/commands/watch_tool
 
-/// The 'watch' command logic
+/// The 'config' command logic
 fn do(_input: CommandInput) {
-  io.println("todo")
+  Nil
 }
 
-/// Add the 'watch' command to the glint instance
+/// Add the 'config' command to the glint instance
 pub fn command(to glint: Glint(Nil)) {
   glint.add(
     to: glint,
-    at: ["watch"],
+    at: ["config"],
     do: glint.command(do)
       |> glint.description(watch_tool.description),
   )
