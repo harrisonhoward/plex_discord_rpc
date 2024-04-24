@@ -7,22 +7,32 @@ import shellout
 import survey
 
 /// To prevent having input all arguments this function handles only showing the prompt
-fn question(text display: String) -> survey.Survey {
+fn question(
+  text display: String,
+  default default: Option(String),
+) -> survey.Survey {
   survey.new_question(
     prompt: display <> ":",
     help: None,
-    default: None,
+    default: default,
     validate: None,
     transform: None,
   )
 }
 
 /// Traditional question but will return a string with "exit" or string representation of an int
-fn question_int(text display: String) -> survey.Survey {
+fn question_int(
+  text display: String,
+  default default: Option(Int),
+) -> survey.Survey {
+  let default_as_string = case default {
+    Some(num) -> Some(int.to_string(num))
+    None -> None
+  }
   survey.new_question(
     prompt: display <> ":",
     help: None,
-    default: None,
+    default: default_as_string,
     validate: Some(fn(response) {
       // Represents the response as a string
       let sanitised_result =
@@ -88,9 +98,9 @@ fn confirmation(
 }
 
 /// Will prompt the user within the terminal. Returns a string response of their answer.
-pub fn prompt(text display: String) -> String {
+pub fn prompt(text display: String, default default: Option(String)) -> String {
   let assert survey.StringAnswer(response) =
-    question(display)
+    question(display, default)
     |> survey.ask(help: False)
   // If the user types 'exit' close the application
   case
@@ -108,9 +118,9 @@ pub fn prompt(text display: String) -> String {
 
 /// Will prompt the user within the terminal. Returns an int response of their answer.
 /// If the user doesn't enter a number, it will prompt them until they do.
-pub fn prompt_int(text display: String) -> Int {
+pub fn prompt_int(text display: String, default default: Option(Int)) -> Int {
   let assert survey.StringAnswer(response) =
-    question_int(display)
+    question_int(display, default)
     |> survey.ask(help: False)
   let response_int = int.parse(response)
   case response, response_int {
