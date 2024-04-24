@@ -71,7 +71,7 @@ fn confirmation(
     }
   }
   survey.new_question(
-    prompt: display <> " " <> default_string,
+    prompt: display <> " " <> default_string <> ":",
     help: None,
     default: default_value,
     validate: Some(fn(response) {
