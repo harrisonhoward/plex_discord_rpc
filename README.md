@@ -9,7 +9,7 @@
 For this project to be successful I need to create in alignment the following projects
 
 -   Plex Pin auth
-    -   [![Status](https://img.shields.io/badge/Status-Not%20started-red.svg)](https://shields.io/)
+    -   [![Status](https://img.shields.io/badge/Status-Work%20in%20progress-yellow.svg)](https://shields.io/)
 -   Plex Websocket
     -   [![Status](https://img.shields.io/badge/Status-Not%20started-red.svg)](https://shields.io/)
 
@@ -45,7 +45,7 @@ gleam run
 ## Contributing
 
 1. [Fork it](https://github.com/harrisonhoward/plex_discord_rpc/fork)
-2. Clone your forked repository `git clone https://github.com/YOUR_USERNAME/plex_discord_rpc.bit`
+2. Clone your forked repository `git clone https://github.com/YOUR_USERNAME/plex_discord_rpc.git`
 3. Create your feature branch `git checkout -b feature/my-new-feature`
 4. Commit your changes `git commit -am 'Add some feature'`
 5. Push to the branch `git push origin feature/my-new-feature`
