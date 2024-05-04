@@ -1,5 +1,6 @@
 //// This module is a wrapper for the survey module to handle input and output within the terminal.
 
+import gleam/erlang/process
 import gleam/int
 import gleam/option.{type Option, None, Some}
 import gleam/string
@@ -154,4 +155,9 @@ pub fn confirm(text display: String, default default: Option(Bool)) -> Bool {
 /// Exits the terminal
 pub fn exit() {
   shellout.exit(0)
+}
+
+/// Sleeps for a given amount of milliseconds
+pub fn sleep(ms: Int) -> Nil {
+  process.sleep(ms)
 }
