@@ -69,9 +69,13 @@ pub fn init_config_file() -> Result(Nil, FileError) {
 /// Essentially just checks if hostname is present and returns true or false
 pub fn is_base_config_valid() -> Bool {
   // Check all required keys and return true or false
-  case env.get("hostname") {
-    Ok(_) -> True
-    Error(_) -> False
+  let hostname = env.get("hostname")
+  let username = env.get("username")
+  case hostname, username {
+    // Don't allow empty strings
+    Ok(""), Ok("") -> False
+    Ok(_), Ok(_) -> True
+    _, _ -> False
   }
 }
 
@@ -84,12 +88,14 @@ pub fn get_base_config(should_panic should_panic: Bool) -> BaseConfig {
     Error(_) if should_panic -> panic as "Hostname not found in config file"
     Error(_) -> ""
   }
+  let username = case env.get("username") {
+    Ok(value) -> value
+    Error(_) if should_panic -> panic as "Username not found in config file"
+    Error(_) -> ""
+  }
   let port =
     env.get_int("port")
     |> result.unwrap(32_400)
-  let username =
-    env.get("username")
-    |> result.unwrap("me")
   let https =
     env.get_bool("https")
     |> result.unwrap(False)
@@ -111,6 +117,8 @@ pub fn get_base_config(should_panic should_panic: Bool) -> BaseConfig {
 pub fn is_auth_config_valid() -> Bool {
   // Check all required keys and return true or false
   case env.get("token") {
+    // Don't allow empty strings
+    Ok("") -> False
     Ok(_) -> True
     Error(_) -> False
   }
