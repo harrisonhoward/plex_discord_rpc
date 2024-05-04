@@ -34,10 +34,11 @@ packages = [
 [requirements]
 argv = { version = "~> 1.0" }
 dot_env = { version = ">= 0.5.1 and < 1.0.0" }
+gleam_erlang = { version = ">= 0.25.0 and < 1.0.0" }
 gleam_stdlib = { version = "~> 0.36" }
 gleeunit = { version = "~> 1.0" }
 glint = { version = "~> 0.18" }
-plex_pin_auth = { version = ">= 1.0.1 and < 2.0.0"}
+plex_pin_auth = { version = ">= 1.0.1 and < 2.0.0" }
 repeatedly = { version = ">= 2.1.1 and < 3.0.0" }
 shellout = { version = "~> 1.6" }
 simplifile = { version = ">= 1.7.0 and < 2.0.0" }
