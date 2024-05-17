@@ -41,10 +41,10 @@ fn do(_input: CommandInput) {
       current -> " 'current=" <> int.to_string(current) <> "'"
     }
   let current_username =
-    " 'default=me'"
+    "*"
     <> case current_base_config.username {
-      // Default username is me
-      "me" -> ""
+      // Empty string is the default therefore don't show it
+      "" -> ""
       current -> " 'current=" <> current <> "'"
     }
   let current_https =
@@ -69,10 +69,7 @@ fn do(_input: CommandInput) {
       default: Some(current_base_config.port),
     )
   let username =
-    terminal.prompt(
-      "Enter your username" <> current_username,
-      default: Some(current_base_config.username),
-    )
+    terminal.prompt("Enter your username" <> current_username, default: None)
   let https =
     terminal.confirm(
       "Do you use HTTPS?" <> current_https,
