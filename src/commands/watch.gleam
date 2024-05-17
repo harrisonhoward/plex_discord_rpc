@@ -2,7 +2,9 @@
 
 import gleam/io
 import glint.{type CommandInput, type Glint}
-import util/commands/watch_tool
+
+/// Description for the 'watch' command
+pub const description = "Initiate the Plex RPC. Requires Plex auth and Discord to be open."
 
 /// The 'watch' command logic
 fn do(_input: CommandInput) {
@@ -15,6 +17,6 @@ pub fn command(to glint: Glint(Nil)) {
     to: glint,
     at: ["watch"],
     do: glint.command(do)
-      |> glint.description(watch_tool.description),
+      |> glint.description(description),
   )
 }

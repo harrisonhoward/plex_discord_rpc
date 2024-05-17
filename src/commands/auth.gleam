@@ -8,9 +8,11 @@ import plex_pin_auth
 import plex_pin_auth/util/parser.{type PlexError, type PlexPin}
 import repeatedly
 import util/client_identifier
-import util/commands/auth_tool
 import util/env.{ConfigOption}
 import util/terminal
+
+/// Description for the 'auth' command
+pub const description = "Setups the Plex authentication config."
 
 /// The interval in which we poll the server for the token
 const interval_ms = 2000
@@ -110,7 +112,7 @@ pub fn command(to glint: Glint(Nil)) {
     to: glint,
     at: ["auth"],
     do: glint.command(do)
-      |> glint.description(auth_tool.description),
+      |> glint.description(description),
   )
 }
 

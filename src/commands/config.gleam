@@ -6,9 +6,11 @@ import gleam/io
 import gleam/option.{None, Some}
 import gleam/string
 import glint.{type CommandInput, type Glint}
-import util/commands/watch_tool
 import util/env.{ConfigOption}
 import util/terminal
+
+/// Description for the 'config' command
+pub const description = "Write the config file for the your specific environment."
 
 /// The 'config' command logic
 fn do(_input: CommandInput) {
@@ -121,6 +123,6 @@ pub fn command(to glint: Glint(Nil)) {
     to: glint,
     at: ["config"],
     do: glint.command(do)
-      |> glint.description(watch_tool.description),
+      |> glint.description(description),
   )
 }
