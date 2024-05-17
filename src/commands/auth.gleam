@@ -22,7 +22,7 @@ fn do(_input: CommandInput) {
   case env.is_base_config_valid() {
     False -> {
       io.println(
-        "You have no setup the config yet! Please run `plexrpc config` first.",
+        "You have not setup the config yet! Please run `plexrpc config` first.",
       )
       terminal.exit()
     }
@@ -39,13 +39,10 @@ fn do(_input: CommandInput) {
           default: Some(False),
         )
       {
-        True -> {
-          // Spacing out the terminal if the prompt was sent
-          io.println("")
-        }
+        // Spacing out the terminal if the prompt was sent
+        True -> io.println("")
         False -> terminal.exit()
       }
-
     _ -> Nil
   }
 
@@ -53,12 +50,10 @@ fn do(_input: CommandInput) {
   let assert Ok(client_id) = client_identifier.generate()
 
   // We need to create the Plex pin and inform the user of the next steps
-  let create_pin_response =
+  let assert Ok(created_pin) =
     plex_pin_auth.create_pin(client_id)
     |> handle_plex_error
 
-  // Extract the ok response since we know it's okay to go now :)
-  let assert Ok(created_pin) = create_pin_response
   // Inform the user what the code is and what to do with it
   io.println(
     "Successfully created your Plex pin as "
@@ -72,42 +67,37 @@ fn do(_input: CommandInput) {
   )
 
   // Setup repeatedly so we can poll the server for the token
-  repeatedly.call(
-    // For now only poll every 2 seconds
-    interval_ms,
-    Nil,
-    fn(_, _) {
-      let token_response =
-        plex_pin_auth.get_token(client_id, created_pin.id)
-        |> handle_plex_error
+  repeatedly.call(interval_ms, Nil, fn(_, _) {
+    // Poll the server for the token
+    let assert Ok(token) =
+      plex_pin_auth.get_token(client_id, created_pin.id)
+      |> handle_plex_error
 
-      let assert Ok(token) = token_response
-      case token.auth_token {
-        Some(auth_token) -> {
-          // Save the token to the config
-          case
-            env.set_config(ConfigOption(
-              hostname: None,
-              port: None,
-              username: None,
-              https: None,
-              check_users: None,
-              token: Some(auth_token),
-            ))
-          {
-            Ok(_) -> io.println("Successfully authenticated with Plex!")
-            Error(err) -> {
-              io.println("Failed to save the token to the config")
-              io.debug(err)
-              Nil
-            }
+    case token.auth_token {
+      // If the token is returned then we can save it to the config
+      Some(auth_token) -> {
+        case
+          env.set_config(ConfigOption(
+            hostname: None,
+            port: None,
+            username: None,
+            https: None,
+            check_users: None,
+            token: Some(auth_token),
+          ))
+        {
+          Ok(_) -> io.println("Successfully authenticated with Plex!")
+          Error(err) -> {
+            io.println("Failed to save the token to the config")
+            io.debug(err)
+            Nil
           }
-          terminal.exit()
         }
-        None -> Nil
+        terminal.exit()
       }
-    },
-  )
+      None -> Nil
+    }
+  })
 
   // Sleep for the time it takes for the pin to expire
   terminal.sleep(created_pin.expires_in * 1000)
