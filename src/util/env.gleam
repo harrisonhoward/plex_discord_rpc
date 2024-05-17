@@ -59,7 +59,7 @@ pub fn init_config_file() -> Result(Nil, FileError) {
   case file_exists {
     True -> Ok(Nil)
     False ->
-      // Create the config file (This will an empty config file)
+      // Create the config file (This will be an empty config file)
       // To fill this file the user needs to run through the prompt generation
       simplifile.create_file("./" <> name_of_config_file)
   }
