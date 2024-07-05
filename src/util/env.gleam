@@ -29,7 +29,7 @@ pub type BaseConfig {
     hostname: String,
     /// Optional (Default 32400)
     port: Int,
-    /// Optional (Default "me")
+    /// Required (Your Plex account or family member's username)
     username: String,
     /// Optional (Default false)
     https: Bool,
@@ -66,7 +66,7 @@ pub fn init_config_file() -> Result(Nil, FileError) {
 }
 
 /// Will return a boolean if the current config is valid to the base config type\
-/// Essentially just checks if hostname is present and returns true or false
+/// Essentially just checks if hostname or username is present and returns true or false
 pub fn is_base_config_valid() -> Bool {
   // Check all required keys and return true or false
   let hostname = env.get("hostname")
@@ -80,7 +80,7 @@ pub fn is_base_config_valid() -> Bool {
 }
 
 /// Returns the base config\
-/// if should_panic is true (Will error if hostname isn't provided)
+/// if should_panic is true (Will error if hostname or username isn't provided)
 pub fn get_base_config(should_panic should_panic: Bool) -> BaseConfig {
   // Read each config key
   let hostname = case env.get("hostname") {
