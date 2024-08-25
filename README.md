@@ -2,14 +2,14 @@
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![Made with Gleam](https://img.shields.io/badge/Made%20with-Gleam-ffaff3.svg)](https://shields.io/)
-[![Status](https://img.shields.io/badge/Status-Completed-green.svg)](https://shields.io/)
+[![Status](https://img.shields.io/badge/Status-Work%20in%20progress-yellow.svg)](https://shields.io/)
 
 ## Scope
 
 For this project to be successful I need to create in alignment the following projects
 
 -   Plex Pin auth
-    -   [![Status](https://img.shields.io/badge/Status-Work%20in%20progress-yellow.svg)](https://shields.io/)
+    -   [![Status](https://img.shields.io/badge/Status-Completed-green.svg)](https://shields.io/)
 -   Plex Websocket
     -   [![Status](https://img.shields.io/badge/Status-Not%20started-red.svg)](https://shields.io/)
 
