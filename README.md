@@ -11,7 +11,7 @@ For this project to be successful I need to create in alignment the following pr
 -   Plex Pin auth
     -   [![Status](https://img.shields.io/badge/Status-Completed-green.svg)](https://shields.io/)
 -   Plex Websocket
-    -   [![Status](https://img.shields.io/badge/Status-Not%20started-red.svg)](https://shields.io/)
+    -   [![Status](https://img.shields.io/badge/Status-Work%20in%20progress-yellow.svg)](https://shields.io/)
 
 These projects are the ground for working with Plex and making something like this Discord RPC. Along with this no known Discord RPC library exists within Gleam at the moment making this project a lot larger in scope. At the moment I'm aiming to get this project into a means where I depend on these other packages. If I get to the point where these packages are setup within the project I will work on a Discord RPC. Keeping in mind I will not be able to maintain these packages alone due to full-time job, in any case I will do my best to complete them.
 
