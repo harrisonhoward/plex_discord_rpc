@@ -29,8 +29,8 @@ The work will be based on these JavaScript repositories. JavaScript is what I wo
 
 It appears the API isn't officially documented however I found some third-party documentation website. This website will be used in the creation of the pin authentication.
 
--   [get-pin](https://plexapi.dev/docs/plex/get-pin)
--   [get-token](https://plexapi.dev/docs/plex/get-token)
+-   [get-pin](https://plexapi.dev/api-reference/plex/get-a-pin)
+-   [get-token](https://plexapi.dev/api-reference/plex/get-access-token#get-access-token)
 
 ## Development
 
